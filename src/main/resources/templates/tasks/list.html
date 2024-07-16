@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-  <title>Task List</title>
+    <title>Task Manager</title>
+    <link rel="stylesheet" th:href="@{/css/legacy-style.css}">
 </head>
-
 <body>
-  <h1>Task List</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Due Date</th>
-        <th>Completed</th>
-        <th>Completion Date</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="task : ${tasks}">
-        <td th:text="${task.title}">Title</td>
-        <td th:text="${task.description}">Description</td>
-        <td th:text="${task.dueDate}">Due Date</td>
-        <td th:text="${task.completed ? 'Yes' : 'No'}">Completed</td>
-        <td th:text="${task.completionDate}">Completion Date</td>
-        <td>
-          <form th:action="@{/tasks/complete/{id}(id=${task.id})}" method="post">
-            <button type="submit" th:disabled="${task.completed}">Complete</button>
-          </form>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <a href="/tasks/new">Create New Task</a>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <h3>Task List</h3>
+        <!-- Links Section -->
+        <div>
+            <a href="/tasks/new">Create New Task</a>
+            <!-- | <a href="https://www.?.com" target="_blank">Visit?</a> -->
+        </div>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Completed</th>
+                    <th>Completion Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.title}">Title</td>
+                    <td th:text="${task.description}">Description</td>
+                    <td th:text="${task.dueDate}">Due Date</td>
+                    <td th:text="${task.completed ? 'Yes' : 'No'}">Completed</td>
+                    <td th:text="${task.completionDate}">Completion Date</td>
+                    <td>
+                        <form th:action="@{/tasks/complete/{id}(id=${task.id})}" method="post">
+                            <button type="submit" th:disabled="${task.completed}">Complete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <!-- Links Section at the Bottom (Optional) -->
+        <div>
+            <a href="/tasks/new">Create New Task</a>
+            <!-- | <a href="https://www.?.com" target="_blank">Visit?</a> -->
+        </div>
+        <footer>
+            © 2024 Task Manager
+        </footer>
+    </div>
 </body>
-
 </html>
