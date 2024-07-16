@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.redhat.legacytaskmanager.model.Task;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application-test.properties")
 public class TaskServiceTest {
 
   @Autowired
